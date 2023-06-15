@@ -29,6 +29,7 @@ else
 {
     app.UseExceptionHandler("/Home/Error");
 }
+app.UseCors("AllowWebApp");
 app.UseStaticFiles();
 
 app.UseRouting();
