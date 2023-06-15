@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Valkimia.ABMClientes.Data;
 using Valkimia.ABMClientes.Models;
@@ -60,15 +61,64 @@ namespace Valkimia.ABMClientes.Controllers
                 return Json(ex.ToString());
             }
         }
-        [HttpPut]
-        public IActionResult ModifyFactura()
+        [HttpPut("{Id}")]
+        public IActionResult ModifyFactura(Guid Id,Factura factura)
         {
-            return View();
+            try
+            {
+                bool ExisteFactura = _context.Facturas.Any(c => c.Id == Id);
+                if (ExisteFactura)
+                {
+                    Factura FacturaExistente = _context.Facturas.Find(Id);
+                    if (FacturaExistente != null)
+                    {
+                        FacturaExistente.Detalle = factura.Detalle;
+                        FacturaExistente.Importe = factura.Importe;
+                        FacturaExistente.ClienteId = factura.ClienteId;
+                        FacturaExistente.Fecha = factura.Fecha;
+                        _context.Entry(FacturaExistente).State = EntityState.Modified;
+                        _context.SaveChanges();
+                        return Ok();
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                return Json(ex.ToString());
+            }
         }
-        [HttpDelete]
-        public IActionResult DeleteFactura()
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteFactura(Guid Id)
         {
-            return View();
+            try
+            {
+                Factura FacturaExistente = _context.Facturas.FirstOrDefault(c => c.Id == Id);
+                if (FacturaExistente != null)
+                {
+                    _context.Facturas.Remove(FacturaExistente);
+                    _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
         }
     }
 }
