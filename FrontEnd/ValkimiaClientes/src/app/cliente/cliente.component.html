@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="form-container">
+    <h2>Formulario de Cliente</h2>
+    <form [formGroup]="clienteForm" (ngSubmit)="GuardarCliente()">
+      <div>
+        <label>Nombre:</label>
+        <input type="text" formControlName="Nombre" required maxlength="50">
+      </div>
+      <div>
+        <label>Apellido:</label>
+        <input type="text" formControlName="Apellido" required maxlength="50">
+      </div>
+      <div>
+        <label>Domicilio:</label>
+        <input type="text" formControlName="Domicilio" required maxlength="50">
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" formControlName="Email" required maxlength="100">
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" formControlName="Password" required maxlength="100">
+      </div>
+      <div>
+        <label>Habilitado:</label>
+        <select formControlName="Habilitado">
+          <option [value]="true">SI</option>
+          <option [value]="false">NO</option>
+        </select>
+      </div>
+      <div>
+        <label>Ciudad:</label>
+        <select formControlName="CiudadId" required>
+          <option *ngFor="let ciudad of ciudades" [value]="ciudad.Id">{{ ciudad.Ciudad }}</option>
+        </select>
+      </div>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  <div class="form-container-table">
+    <div class="table-container">
+      <h2>Clientes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Domicilio</th>
+            <th>Email</th>
+            <th>Ciudad</th>
+            <th>Habilitado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{ cliente.Nombre }}</td>
+            <td>{{ cliente.Apellido }}</td>
+            <td>{{ cliente.Domicilio }}</td>
+            <td>{{ cliente.Email }}</td>
+            <td>{{ cliente.Ciudad}}</td>
+            <td>
+              <ng-container *ngIf="cliente.Habilitado; else noOption">SI</ng-container>
+              <ng-template #noOption>NO</ng-template>
+            </td>
+            <td>
+              <button (click)="CargarClienteAForm(i,cliente)">Editar</button>
+              <button (click)="EliminarCliente(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>

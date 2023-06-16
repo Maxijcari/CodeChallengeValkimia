@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="form-container">
+        <h2>Formulario de Factura</h2>
+        <form [formGroup]="facturaForm" (ngSubmit)="GuardarFactura()">
+            <div>
+                <label>Cliente:</label>
+                <select formControlName="ClienteId" required>
+                  <option *ngFor="let cliente of clientes" [value]="cliente.Id">{{ cliente.Nombre +' '+ cliente.Apellido }}</option>
+                </select>
+              </div>
+            <div>
+              <label>Fecha:</label>
+              <input type="date" formControlName="Fecha" required maxlength="50">
+            </div>
+            <div>
+              <label>Importe:</label>
+              <input type="number" formControlName="Importe" step="0.0001" min="0" required maxlength="50">
+            </div>
+            <div>
+              <label>Detalle:</label>
+              <textarea formControlName="Detalle" required maxlength="200"></textarea>
+            </div>
+            
+            <button type="submit">Guardar</button>
+          </form>
+    </div>
+    <div class="form-container-table">
+        <div class="table-container">
+            <h2>Facturas</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Cliente</th>
+                  <th>Fecha</th>
+                  <th>Importe</th>
+                  <th>Detalle</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let factura of facturas; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{ factura.Cliente }}</td>
+                  <td>{{ factura.Fecha | date:'MM-dd-yyyy'}}</td>
+                  <td>{{ factura.Importe }}</td>
+                  <td>{{ factura.Detalle }}</td>
+                  <td>
+                    <button (click)="CargarFacturaAForm(i,factura)">Editar</button>
+                    <button (click)="EliminarFactura(i)">Eliminar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<header>
+    <nav>
+      <ul>
+        <li (click)="redirigirCliente()">Cliente</li>
+        <li (click)="redirigirFactura()">Factura</li>
+        <li class="cerrar-sesion" (click)="cerrarSesion()">Cerrar Sesión</li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <app-cliente *ngIf="opcionSeleccionada === 'cliente'"></app-cliente>
+    <app-factura *ngIf="opcionSeleccionada === 'factura'"></app-factura>
+  </main>
+  <router-outlet></router-outlet>

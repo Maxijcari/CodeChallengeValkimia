@@ -1,0 +1,29 @@
+header {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  nav ul li:hover {
+    text-decoration: underline;
+  }
+  
+  .cerrar-sesion {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
