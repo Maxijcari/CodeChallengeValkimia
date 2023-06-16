@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "3b0073c2-4170-425c-8ea0-2b2268286ddb",
+		"name": "EndPointsValkimia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7486624"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Obtener todos los clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5206/api/Cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Kira\",\r\n  \"apellido\": \"Roman perez\",\r\n  \"domicilio\": \"comuna 20\",\r\n  \"email\": \"Kira@hotmail.com\",\r\n  \"password\": \"pedritopuerco\",\r\n  \"habilitado\": false,\r\n  \"ciudadId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5206/api/Cliente/CC5E87A4-F9F6-41C4-AE55-172483CAA008",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Cliente",
+								"CC5E87A4-F9F6-41C4-AE55-172483CAA008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Kira\",\r\n  \"apellido\": \"Roman\",\r\n  \"domicilio\": \"comuna 13\",\r\n  \"email\": \"Kira@hotmail.com\",\r\n  \"password\": \"pedrito\",\r\n  \"habilitado\": true,\r\n  \"ciudadId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5206/api/Cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5206/api/Cliente/3697EC63-8397-40A0-3249-08DB6D4EFF86",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Cliente",
+								"3697EC63-8397-40A0-3249-08DB6D4EFF86"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Factura",
+			"item": [
+				{
+					"name": "Obtener todas las facturas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5206/api/Factura",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Factura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Factura",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ClienteId\":\"00000000-0000-0000-0000-000000000002\",\r\n  \"Fecha\": \"2023-06-11\",\r\n  \"Detalle\": \"Descripción de la factura\",\r\n  \"Importe\": 100.00\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5206/api/Factura",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Factura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Factura",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ClienteId\":\"00000000-0000-0000-0000-000000000001\",\r\n  \"Fecha\": \"2023-06-15\",\r\n  \"Detalle\": \"Se modificó la factura, cambio de cliente\",\r\n  \"Importe\": 150.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5206/api/Factura/00000000-0000-0000-0000-000000000004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Factura",
+								"00000000-0000-0000-0000-000000000004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Factura",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5206/api/Factura/00000000-0000-0000-0000-000000000004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Factura",
+								"00000000-0000-0000-0000-000000000004"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Validar credenciales Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\":\"macito@gmail.com\",\r\n    \"Password\":\"pastorcitolibre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5206/api/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5206",
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
