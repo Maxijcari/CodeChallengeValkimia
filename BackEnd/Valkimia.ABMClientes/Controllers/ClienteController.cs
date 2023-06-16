@@ -115,13 +115,16 @@ namespace Valkimia.ABMClientes.Controllers
             try
             {
                 Cliente cliente = _context.Clientes.FirstOrDefault(c => c.Id == Id);
-                if (cliente == null)
+                if (cliente != null)
                 {
                     _context.Clientes.Remove(cliente);
-                    _context.SaveChangesAsync();
+                    _context.SaveChanges();
                     return Ok();
                 }
-                return NotFound();
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {

@@ -106,7 +106,7 @@ namespace Valkimia.ABMClientes.Controllers
                 if (FacturaExistente != null)
                 {
                     _context.Facturas.Remove(FacturaExistente);
-                    _context.SaveChangesAsync();
+                    _context.SaveChanges();
                     return Ok();
                 }
                 else
